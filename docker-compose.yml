@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Banco de Dados MariaDB
+  db:
+    image: mariadb:10.11
+    container_name: credito-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: credito_db
+      MYSQL_USER: mariadb
+      MYSQL_PASSWORD: mariadbpwd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - credito-network
+
+  # Backend Spring Boot API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: credito-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/credito_db?useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: mariadb
+      SPRING_DATASOURCE_PASSWORD: mariadbpwd
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MariaDBDialect
+    networks:
+      - credito-network
+
+  # Frontend Angular App
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: credito-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - credito-network
+
+volumes:
+  mariadb_data:
+
+networks:
+  credito-network:
+    driver: bridge
