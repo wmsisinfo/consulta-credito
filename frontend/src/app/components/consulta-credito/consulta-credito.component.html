@@ -1,0 +1,45 @@
+<div class="consulta-container">
+  <h2>Consulta de Créditos Constituídos</h2>
+
+  <div class="search-group">
+    <input type="text" placeholder="Digite o número da NFS-e ou do Crédito" [(ngModel)]="chaveBusca" />
+    <button (click)="onSubmit()" [disabled]="carregando">
+      {{ carregando ? 'Carregando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <div *ngIf="erro" class="alert">{{ erro }}</div>
+
+  <div *ngIf="creditos.length > 0; else noData">
+    <table>
+      <thead>
+        <tr>
+          <th>Nº Crédito</th>
+          <th>Nº NFS-e</th>
+          <th>Data</th>
+          <th>Valor ISSQN</th>
+          <th>Tipo</th>
+          <th>Simples Nacional</th>
+          <th>Alíquota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of creditos">
+          <td>{{ c.numeroCredito }}</td>
+          <td>{{ c.numeroNfse }}</td>
+          <td>{{ c.dataConstituicao | date:'dd/MM/yyyy' }}</td>
+          <td>{{ c.valorIssqn | currency }}</td>
+          <td>{{ c.tipoCredito }}</td>
+          <td>{{ c.simplesNacional ? 'Sim' : 'Não' }}</td>
+          <td>{{ c.aliquota }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data" *ngIf="creditos.length === 0 && !carregando">
+      Nenhum crédito encontrado.
+    </div>
+  </ng-template>
+</div>
