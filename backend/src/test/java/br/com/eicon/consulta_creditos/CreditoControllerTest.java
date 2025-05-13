@@ -50,7 +50,7 @@ class CreditoControllerTest {
 
     @Test
     @DisplayName("GET /api/creditos/{nfse} retorna 200 e JSON correto")
-    void porNfse_Sucesso() throws Exception {
+    void DeveRetornar200eJsonCorretoQuandoProcuraNfse() throws Exception {
         var dto = makeDto();
         when(service.buscarPorNfse("7891011")).thenReturn(List.of(dto));
 
@@ -66,7 +66,7 @@ class CreditoControllerTest {
 
     @Test
     @DisplayName("GET /api/creditos/{nfse} retorna 404 quando lista vazia")
-    void porNfse_NotFound() throws Exception {
+    void DeveRetornar404QuandoProcuraPorNfseENaoEncontraNada() throws Exception {
         when(service.buscarPorNfse("0000")).thenReturn(List.of());
 
         mockMvc.perform(get("/api/creditos/{nfse}", "0000"))
@@ -75,7 +75,7 @@ class CreditoControllerTest {
 
     @Test
     @DisplayName("GET /api/creditos/credito/{numero} retorna 200 e JSON correto")
-    void porCredito_Sucesso() throws Exception {
+    void DeveRetornar200EJsonCorretoQuandoBuscaPorCredito() throws Exception {
         var dto = makeDto();
         when(service.buscarPorCredito("123456")).thenReturn(List.of(dto));
 
@@ -88,7 +88,7 @@ class CreditoControllerTest {
 
     @Test
     @DisplayName("GET /api/creditos/credito/{numero} retorna 404 quando lista vazia")
-    void porCredito_NotFound() throws Exception {
+    void DeveRetornar404QuandoProcuraPorCreditoENaoEncontraNada() throws Exception {
         when(service.buscarPorCredito("000000")).thenReturn(List.of());
 
         mockMvc.perform(get("/api/creditos/credito/{numero}", "000000"))
