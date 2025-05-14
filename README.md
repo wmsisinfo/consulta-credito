@@ -118,8 +118,13 @@ Data e hora da consulta
 Quantidade de registros encontrados
 Resultados em formato JSON
 
+---
+
 ## 🧪 Requisitos Mínimos
-✅ Docker Engine >= 20.x
-✅ Docker Compose v2+
-✅ Node.js v18+ e npm (para build local do frontend)
-✅ Java 17+ (para rodar o backend localmente)
+
+- ✅ Docker Engine >= **20.x**  
+- ✅ Docker Compose v2+  
+- ✅ Node.js >= **v18** + npm (para build local do frontend)  
+- ✅ Java >= **17** (para rodar o backend localmente)
+
+---
