@@ -1,66 +1,72 @@
-🏦 Consulta de Créditos Constituídos
-Este projeto permite a consulta de créditos constituídos por meio de uma API RESTful desenvolvida com Spring Boot (Java 17) e interface web feita com Angular 18 . 
-O sistema também publica eventos no Apache Kafka sempre que uma consulta é realizada, permitindo auditoria e análise de logs.
+# 🏦 Consulta de Créditos Constituídos
 
-O projeto é totalmente containerizado com Docker Compose , incluindo:
+Este projeto permite a consulta de créditos constituídos por meio de uma **API RESTful** desenvolvida com **Spring Boot (Java 17)** e uma interface web em **Angular 18**.  
+O sistema também publica eventos no **Apache Kafka** sempre que uma consulta é realizada, permitindo **auditoria** e **análise de logs**.
 
-Backend Spring Boot
-Frontend Angular
-Banco de dados MariaDB
-Apache Kafka + Zookeeper
-Interface web para visualização dos tópicos do Kafka (kafka-ui)
-Flyway para versionamento de banco de dados
+O projeto é totalmente **containerizado com Docker Compose**, incluindo:
 
-🧩 Funcionalidades
-🔍 Busca de créditos por número da NFS-e ou número do crédito
-📊 Tabela responsiva no frontend Angular
-💾 Armazenamento com MariaDB
-📦 Containerização completa via Docker
-📢 Publicação de eventos no Kafka
-👁️ Visualização de tópicos Kafka via kafka-ui
-🔄 Migração de banco com Flyway
-🌐 Suporte a CORS entre frontend e backend
-🚀 Tecnologias Utilizadas
+- ✅ Backend Spring Boot  
+- ✅ Frontend Angular  
+- ✅ Banco de dados MariaDB  
+- ✅ Apache Kafka + Zookeeper  
+- ✅ Interface web para visualização dos tópicos do Kafka (`kafka-ui`)  
+- ✅ Flyway para versionamento de banco de dados  
 
-Backend
-Spring Boot Java 17
+---
 
-Frontend
-Angular 18 (standalone)
+## 🧩 Funcionalidades
 
-Banco de Dados
-MariaDB
+- 🔍 Busca de créditos por número da NFS-e ou número do crédito  
+- 📊 Tabela responsiva no frontend Angular  
+- 💾 Armazenamento com MariaDB  
+- 📦 Containerização completa via Docker  
+- 📢 Publicação de eventos no Kafka  
+- 👁️ Visualização de tópicos Kafka via `kafka-ui`  
+- 🔄 Migração de banco com Flyway  
+- 🌐 Suporte a CORS entre frontend e backend  
 
-Mensageria
-Apache Kafka
+---
 
-Containerização
-Docker + Docker Compose
+## 🚀 Tecnologias Utilizadas
 
-Migração de Banco
-Flyway
+### Backend
+- Spring Boot (Java 17)
 
-Serialização JSON
-Jackson (
-jackson-datatype-jsr310
-)
+### Frontend
+- Angular 18 (standalone)
 
-📥 Como Baixar o Projeto
-Clone o repositório:
+### Banco de Dados
+- MariaDB
 
+### Mensageria
+- Apache Kafka
+
+### Containerização
+- Docker + Docker Compose
+
+### Migração de Banco
+- Flyway
+
+### Serialização JSON
+- Jackson (`jackson-datatype-jsr310`)
+
+---
+
+## 📥 Como Baixar o Projeto
+
+```bash
 git clone https://github.com/wmsisinfo/consulta-credito.git
-
 cd consulta-credito
 
 
-⚙️ Estrutura do Projeto
+## ⚙️ Estrutura do Projeto
 consulta-credito
 ├── backend/
 ├── frontend/
 ├── docker-compose.yml
 └── README.md
 
-🐳 Como Executar com Docker Compose
+## 🐳 Como Executar com Docker Compose
 Na raiz do projeto, execute:
 
 docker compose up --build
@@ -72,7 +78,7 @@ Servir o frontend Angular em http://localhost
 Disponibilizar o Kafka UI em http://localhost:8081
 ⚠️ A primeira execução pode demorar mais tempo, pois todas as imagens serão baixadas. 
 
-🖥️ Como Testar o Frontend
+##  🖥️ Como Testar o Frontend
 Acesse no navegador:
 
 http://localhost
@@ -81,7 +87,7 @@ Digite o número da NFS-e ou do Crédito
 Clique em Buscar
 Os resultados aparecerão em uma tabela organizada
 
-🔍 Como Visualizar Eventos no Kafka
+## 🔍 Como Visualizar Eventos no Kafka
 
 Acesse:
 http://localhost:8081
