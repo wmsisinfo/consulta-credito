@@ -1,4 +1,3 @@
-// src/app/components/consulta-credito/consulta-credito.component.ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,10 +9,7 @@ import { Credito } from '../../models/credito.model';
   templateUrl: './consulta-credito.component.html',
   styleUrls: ['./consulta-credito.component.scss'],
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule
-  ]
+  imports: [FormsModule, CommonModule]
 })
 export class ConsultaCreditoComponent {
   chaveBusca: string = '';
@@ -23,7 +19,6 @@ export class ConsultaCreditoComponent {
 
   constructor(private creditoService: CreditoService) {}
 
-  // ✅ Método onSubmit adicionado aqui
   onSubmit() {
     if (!this.chaveBusca.trim()) return;
 
@@ -31,13 +26,29 @@ export class ConsultaCreditoComponent {
     this.erro = '';
     this.creditos = [];
 
-    this.creditoService.buscarPorChave(this.chaveBusca).subscribe({
+    if (/^\d+$/.test(this.chaveBusca)) {
+      this.creditoService.buscarPorNfse(this.chaveBusca).subscribe({
+        next: (data) => {
+          this.creditos = data;
+          this.carregando = false;
+        },
+        error: () => {
+          this.tentarPorCredito();
+        }
+      });
+    } else {
+      this.tentarPorCredito();
+    }
+  }
+
+  private tentarPorCredito() {
+    this.creditoService.buscarPorCredito(this.chaveBusca).subscribe({
       next: (data) => {
         this.creditos = data;
         this.carregando = false;
       },
       error: () => {
-        this.erro = 'Nenhum crédito encontrado ou ocorreu um erro.';
+        this.erro = 'Nenhum crédito encontrado.';
         this.carregando = false;
       }
     });

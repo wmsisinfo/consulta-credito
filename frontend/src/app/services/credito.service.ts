@@ -9,7 +9,13 @@ export class CreditoService {
 
   constructor(private http: HttpClient) {}
 
-  buscarPorChave(chave: string): Observable<Credito[]> {
-    return this.http.get<Credito[]>(`${this.apiUrl}/${chave}`);
+  // Busca por NFS-e
+  buscarPorNfse(numeroNfse: string): Observable<Credito[]> {
+    return this.http.get<Credito[]>(`${this.apiUrl}/${numeroNfse}`);
+  }
+
+  // Busca por número do crédito
+  buscarPorCredito(numeroCredito: string): Observable<Credito[]> {
+    return this.http.get<Credito[]>(`${this.apiUrl}/credito/${numeroCredito}`);
   }
 }

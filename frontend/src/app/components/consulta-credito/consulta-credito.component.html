@@ -2,7 +2,11 @@
   <h2>Consulta de Créditos Constituídos</h2>
 
   <div class="search-group">
-    <input type="text" placeholder="Digite o número da NFS-e ou do Crédito" [(ngModel)]="chaveBusca" />
+    <input 
+      type="text" 
+      placeholder="Digite o número da NFS-e ou do Crédito" 
+      [(ngModel)]="chaveBusca"
+    />
     <button (click)="onSubmit()" [disabled]="carregando">
       {{ carregando ? 'Carregando...' : 'Buscar' }}
     </button>
