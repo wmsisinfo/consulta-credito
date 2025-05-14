@@ -1,5 +1,6 @@
 🏦 Consulta de Créditos Constituídos
-Este projeto permite a consulta de créditos constituídos por meio de uma API RESTful desenvolvida com Spring Boot (Java 17) e interface web feita com Angular 18 . O sistema também publica eventos no Apache Kafka sempre que uma consulta é realizada, permitindo auditoria e análise de logs.
+Este projeto permite a consulta de créditos constituídos por meio de uma API RESTful desenvolvida com Spring Boot (Java 17) e interface web feita com Angular 18 . 
+O sistema também publica eventos no Apache Kafka sempre que uma consulta é realizada, permitindo auditoria e análise de logs.
 
 O projeto é totalmente containerizado com Docker Compose , incluindo:
 
@@ -81,11 +82,11 @@ Clique em Buscar
 Os resultados aparecerão em uma tabela organizada
 
 🔍 Como Visualizar Eventos no Kafka
+
 Acesse:
-
 http://localhost:8081
-No painel do Kafka UI:
 
+No painel do Kafka UI:
 No menu lateral esquerdo, clique em Topics
 Selecione o tópico chamado consultas-realizadas
 Na aba Messages , você verá os eventos gerados após cada consulta
