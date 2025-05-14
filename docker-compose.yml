@@ -1,23 +1,25 @@
 version: '3.8'
 
 services:
-  # Banco de Dados MariaDB
   db:
     image: mariadb:10.11
     container_name: credito-db
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: credito_db
-      MYSQL_USER: mariadb
-      MYSQL_PASSWORD: mariadbpwd
+      MYSQL_DATABASE: creditos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
     ports:
       - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
-    networks:
-      - credito-network
+      - ./backend/src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
-  # Backend Spring Boot API
   backend:
     build:
       context: ./backend
@@ -25,15 +27,16 @@ services:
     container_name: credito-api
     ports:
       - "8080:8080"
-    depends_on:
-      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/credito_db?useSSL=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: mariadb
-      SPRING_DATASOURCE_PASSWORD: mariadbpwd
-      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.MariaDBDialect
-    networks:
-      - credito-network
+      DB_NAME: creditos
+      DB_USER: user
+      DB_PASSWORD: pass
+      DB_HOST: db
+      DB_PORT: 3306
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure:10
 
   # Frontend Angular App
   frontend:
@@ -45,12 +48,6 @@ services:
       - "4200:80"
     depends_on:
       - backend
-    networks:
-      - credito-network
 
 volumes:
   mariadb_data:
-
-networks:
-  credito-network:
-    driver: bridge

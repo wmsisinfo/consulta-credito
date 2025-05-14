@@ -11,3 +11,4 @@ CREATE TABLE credito (
      valor_deducao DECIMAL(15,2) NOT NULL,
      base_calculo DECIMAL(15,2) NOT NULL
 );
+
