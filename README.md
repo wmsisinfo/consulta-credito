@@ -59,12 +59,19 @@ git clone https://github.com/wmsisinfo/consulta-credito.git
 cd consulta-credito
 ```
 
+---
+
 ## ⚙️ Estrutura do Projeto
-consulta-credito
+
+```
+consulta-credito/
 ├── backend/
 ├── frontend/
 ├── docker-compose.yml
 └── README.md
+```
+
+---
 
 ## 🐳 Como Executar com Docker Compose
 Na raiz do projeto, execute:
