@@ -72,18 +72,25 @@ consulta-credito/
 ```
 
 ---
-
 ## 🐳 Como Executar com Docker Compose
+
 Na raiz do projeto, execute:
 
+```bash
 docker compose up --build
+```
 
-Iniciar o MariaDB
-Rodar as migrações Flyway
-Subir a API Spring Boot em http://localhost:8080
-Servir o frontend Angular em http://localhost
-Disponibilizar o Kafka UI em http://localhost:8081
-⚠️ A primeira execução pode demorar mais tempo, pois todas as imagens serão baixadas. 
+Este comando irá:
+
+- Iniciar o MariaDB  
+- Rodar as migrações Flyway  
+- Subir a API Spring Boot em `http://localhost:8080`  
+- Servir o frontend Angular em `http://localhost`  
+- Disponibilizar o Kafka UI em `http://localhost:8081`  
+
+> ⚠️ A primeira execução pode demorar mais tempo, pois todas as imagens serão baixadas.
+
+---
 
 ##  🖥️ Como Testar o Frontend
 Acesse no navegador:
