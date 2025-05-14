@@ -54,8 +54,8 @@ cd consulta-credito
 
 ⚙️ Estrutura do Projeto
 consulta-credito
-├── backend/          
-├── frontend/         
+├── backend/
+├── frontend/
 ├── docker-compose.yml
 └── README.md
 
