@@ -57,7 +57,7 @@ O projeto é totalmente **containerizado com Docker Compose**, incluindo:
 ```bash
 git clone https://github.com/wmsisinfo/consulta-credito.git
 cd consulta-credito
-
+```
 
 ## ⚙️ Estrutura do Projeto
 consulta-credito
@@ -103,7 +103,8 @@ Valor consultado
 Data e hora da consulta
 Quantidade de registros encontrados
 Resultados em formato JSON
-🧪 Requisitos Mínimos
+
+## 🧪 Requisitos Mínimos
 ✅ Docker Engine >= 20.x
 ✅ Docker Compose v2+
 ✅ Node.js v18+ e npm (para build local do frontend)
