@@ -53,9 +53,9 @@ cd consulta-credito
 
 
 ⚙️ Estrutura do Projeto
-consulta-credito/
-├── backend/          # API RESTful Spring Boot
-├── frontend/         # Aplicação Angular
+consulta-credito
+├── backend/          
+├── frontend/         
 ├── docker-compose.yml
 └── README.md
 
